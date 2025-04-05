@@ -9,21 +9,21 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Downbad.ai - Your wallet. Your trauma. Our roast.",
-  description: "Discover how financially wrecked you really are.",
+  description: "Connect your wallet and let our AI roast your financial decisions. We promise it's therapeutic (and slightly humiliating).",
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
         <WalletProviderWrapper>
-          <div className="min-h-screen bg-gray-950 text-white">
+          <div className="flex flex-col min-h-screen">
             <Navbar />
-            <main className="pt-16">
+            <main className="flex-grow">
               {children}
             </main>
             <Footer />
