@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "downbadai",
   "version": "0.1.0",
   "private": true,
@@ -36,3 +37,17 @@
     "typescript": "^5.3.3"
   }
 }
+=======
+  "name": "anchor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+} 
+>>>>>>> 55b52594ffcaf90ff94074a2aae4b243011c570f
