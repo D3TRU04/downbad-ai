@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -6,6 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+.yarn
 
 # testing
 /coverage
@@ -36,9 +36,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 tmp
-=======
+
+# Solana/Anchor specific
 .anchor
-.DS_Store
 target/debug
 target/deploy
 target/release
@@ -46,7 +46,4 @@ target/sbf-solana-solana
 target/test-ledger
 target/.rustc_info.json
 **/*.rs.bk
-node_modules
 test-ledger
-.yarn
->>>>>>> 55b52594ffcaf90ff94074a2aae4b243011c570f
