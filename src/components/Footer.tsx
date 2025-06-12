@@ -16,14 +16,14 @@ export function Footer() {
           
           <div className="flex items-center gap-6">
             <Link 
-              href="https://twitter.com/downbadai" 
+              href="https://x.com/d3tru04" 
               target="_blank"
               className="text-[#F2F2F2]/60 hover:text-[#F15A24] transition-colors"
             >
               <Twitter className="w-5 h-5" />
             </Link>
             <Link 
-              href="https://github.com/downbadai" 
+              href="https://github.com/D3TRU04/downbad-ai" 
               target="_blank"
               className="text-[#F2F2F2]/60 hover:text-[#F15A24] transition-colors"
             >
