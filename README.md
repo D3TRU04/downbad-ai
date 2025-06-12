@@ -1,96 +1,141 @@
-# legacy-downbadai
+# Downbad.ai
 
-## Getting Started
+> **Your wallet. Your trauma. Our roast.**
+
+Downbad.ai is a Solana-powered web app that uses AI to analyze and roast your wallet. Connect your wallet, get a brutally honest (and meme-worthy) breakdown of your financial decisions, and share your Downbad Score™ with the world.
+
+---
+
+## 🚀 Features
+
+- 🔥 **AI-Generated Roast:** Get roasted by an AI trained to be brutally honest about your wallet.
+- 📉 **Loss Analysis:** See a detailed breakdown of your worst trades and investments.
+- 💀 **Downbad Score™:** Receive a personal score and meme card to share your pain.
+- 🧠 **Solana Native:** Built with Next.js, React, and Solana wallet adapter.
+- 🛡️ **Abuse Protection:** Rate limits, payload size checks, and wallet validation to keep things fair.
+
+---
+
+## 🌐 Live Demo
+
+> _Add your deployment link here, e.g. [downbad.ai](https://downbad.ai)_
+
+![Downbad.ai Screenshot](screenshot.png)
+
+---
+
+## 🏗️ Architecture
+
+- **Frontend:** Next.js (App Router), React, TailwindCSS
+- **Solana Integration:** Wallet Adapter, web3.js
+- **AI Backend:** Next.js API route using OpenAI GPT-3.5 Turbo
+- **Smart Contract (optional):** Anchor framework (Rust)
+
+---
+
+## 📁 Folder Structure
+
+```
+/anchor           # (Optional) Solana smart contract (Rust, Anchor)
+/src
+  /app            # Next.js app directory (pages, API routes)
+    /api/analyze  # AI analysis API route
+    /dashboard    # Dashboard page
+    /...          # Other app pages
+  /components     # React components (Hero, Dashboard, Navbar, etc.)
+  /...            # Utilities, hooks, etc.
+/public           # Static assets (images, favicon, etc.)
+/README.md        # This file
+```
+
+---
+
+## 🛠️ Getting Started
 
 ### Prerequisites
+- Node.js v18+
+- Yarn or npm
+- (Optional) Solana CLI & Anchor for smart contract development
 
-- Node v18.18.0 or higher
-
-- Rust v1.77.2 or higher
-- Anchor CLI 0.30.1 or higher
-- Solana CLI 1.18.17 or higher
-
-### Installation
-
-#### Clone the repo
-
-```shell
-git clone <repo-url>
-cd <repo-name>
+### 1. Clone the repo
+```sh
+git clone https://github.com/D3TRU04/downbad-ai.git
+cd downbad-ai
 ```
 
-#### Install Dependencies
-
-```shell
-pnpm install
+### 2. Install dependencies
+```sh
+npm install
+# or
+yarn install
 ```
 
-#### Start the web app
-
+### 3. Set up your OpenAI API key
+- Copy `.env.example` to `.env` and add your OpenAI API key:
 ```
-pnpm dev
+OPENAI_API_KEY=sk-...
 ```
+- **Never commit your .env file!**
 
-## Apps
-
-### anchor
-
-This is a Solana program written in Rust using the Anchor framework.
-
-#### Commands
-
-You can use any normal anchor commands. Either move to the `anchor` directory and run the `anchor` command or prefix the
-command with `pnpm`, eg: `pnpm anchor`.
-
-#### Sync the program id:
-
-Running this command will create a new keypair in the `anchor/target/deploy` directory and save the address to the
-Anchor config file and update the `declare_id!` macro in the `./src/lib.rs` file of the program.
-
-You will manually need to update the constant in `anchor/lib/basic-exports.ts` to match the new program id.
-
-```shell
-pnpm anchor keys sync
+### 4. Run the app
+```sh
+npm run dev
+# or
+yarn dev
 ```
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-#### Build the program:
+---
 
-```shell
-pnpm anchor-build
-```
+## 🧑‍💻 Usage
+- Click **Connect Wallet** to connect your Solana wallet (Phantom supported).
+- Click **View Dashboard** to get your AI-generated roast and Downbad Score™.
+- Share your pain with friends (or enemies).
 
-#### Start the test validator with the program deployed:
+---
 
-```shell
-pnpm anchor-localnet
-```
+## 🔒 Security & Abuse Prevention
+- **Wallet validation:** Only valid Solana addresses are accepted.
+- **Rate limiting:** Max 5 analyses per wallet, 10 per IP per hour.
+- **Payload size:** Stats payloads are limited to 1000 characters.
+- **No secrets in git:** `.env` is gitignored and must never be committed.
 
-#### Run the tests
+---
 
-```shell
-pnpm anchor-test
-```
+## ⚙️ Tech Stack
+- **Frontend:** Next.js, React, TailwindCSS
+- **Solana:** Wallet Adapter, web3.js
+- **AI:** OpenAI GPT-3.5 Turbo
+- **Smart Contract:** Anchor (Rust, optional)
 
-#### Deploy to Devnet
+---
 
-```shell
-pnpm anchor deploy --provider.cluster devnet
-```
+## 🤝 Contributing
+PRs welcome! Please open an issue first to discuss major changes.
 
-### web
+---
 
-This is a React app that uses the Anchor generated client to interact with the Solana program.
+## 📜 License
+MIT
 
-#### Commands
+---
 
-Start the web app
+## ❓ FAQ
 
-```shell
-pnpm dev
-```
+### Is this financial advice?
+> No. This app is for entertainment purposes only. If you get roasted, it's on you.
 
-Build the web app
+### Can I use a different wallet?
+> Phantom is supported out of the box. Add more wallets in `src/components/WalletProvider.tsx` if needed.
 
-```shell
-pnpm build
-```
+### How do I deploy this?
+> Deploy like any Next.js app (Vercel, Netlify, etc.). Make sure to set your `OPENAI_API_KEY` in the environment variables.
+
+### How do I run the Solana smart contract?
+> See the `/anchor` folder for Anchor/CLI instructions. This is optional for the AI roast features.
+
+---
+
+## 👤 Credits
+- Built by [@D3TRU04](https://github.com/D3TRU04) and contributors
+- Powered by [Solana](https://solana.com/) and [OpenAI](https://openai.com/)
