@@ -28,6 +28,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Solana CLI tools
+        run: |
+          sh -c "$(curl -sSfL https://release.solana.com/v1.18.9/install)"
+          export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+          solana --version
+
       - uses: metadaoproject/setup-anchor@v2
         with:
           anchor-version: '0.30.1'
@@ -35,13 +41,19 @@ jobs:
           solana-cli-version: '1.18.9'
 
       - name: Generate new keypair
-        run: solana-keygen new --no-bip39-passphrase
+        run: |
+          export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+          solana-keygen new --no-bip39-passphrase
 
       - name: Set solana target cluster to local
-        run: solana config set --url http://localhost:8899
+        run: |
+          export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+          solana config set --url http://localhost:8899
 
       - name: Check solana config
-        run: solana config get
+        run: |
+          export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+          solana config get
 
       - run: pnpm run anchor build
         shell: bash
