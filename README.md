@@ -18,9 +18,7 @@ Downbad.ai is a Solana-powered web app that uses AI to analyze and roast your wa
 
 ## 🌐 Live Demo
 
-> _Add your deployment link here, e.g. [downbad.ai](https://downbad.ai)_
-
-![Downbad.ai Screenshot](screenshot.png)
+https://downbad-ai-eight.vercel.app/
 
 ---
 
@@ -73,7 +71,7 @@ yarn install
 ### 3. Set up your OpenAI API key
 - Copy `.env.example` to `.env` and add your OpenAI API key:
 ```
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=...
 ```
 - **Never commit your .env file!**
 
@@ -137,5 +135,5 @@ MIT
 ---
 
 ## 👤 Credits
-- Built by [@D3TRU04](https://github.com/D3TRU04) and contributors
+- Built by [@D3TRU04](https://github.com/D3TRU04) 
 - Powered by [Solana](https://solana.com/) and [OpenAI](https://openai.com/)
