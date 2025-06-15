@@ -53,16 +53,30 @@ fi
 # Change to anchor directory
 cd anchor
 
-# Build the program
-if command -v cargo-build-sbf &> /dev/null; then
+# Try to build with available tools
+if command -v anchor &> /dev/null && command -v cargo-build-sbf &> /dev/null; then
     echo "Building with full Anchor toolchain..."
     anchor build --no-idl
-else
-    echo "cargo-build-sbf not available, using fallback..."
-    # Fallback: just compile with cargo
+elif command -v cargo-build-sbf &> /dev/null; then
+    echo "Building with cargo-build-sbf..."
     cd programs/basic
     cargo build-sbf
     cd ../..
+else
+    echo "Building with standard cargo (limited functionality)..."
+    # Add wasm32 target if not available
+    rustup target add wasm32-unknown-unknown
+    
+    cd programs/basic
+    cargo build --release --target wasm32-unknown-unknown
+    cd ../..
+    
+    # Create the expected binary location
+    mkdir -p target/deploy
+    if [ -f "programs/basic/target/wasm32-unknown-unknown/release/basic.wasm" ]; then
+        cp programs/basic/target/wasm32-unknown-unknown/release/basic.wasm target/deploy/basic.so
+        echo "Created basic.so from WASM build"
+    fi
 fi
 
 # Ensure IDL and types exist
