@@ -5,27 +5,48 @@ set -e
 
 echo "Building Anchor program..."
 
+# Function to install Solana CLI
+install_solana() {
+    echo "Installing Solana CLI..."
+    if curl -sSf https://release.anza.xyz/stable/install | sh; then
+        export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+        echo "Solana CLI installed successfully"
+    else
+        echo "Failed to install Solana CLI from Anza, trying legacy method..."
+        if curl -sSf https://release.solana.com/stable/install | sh; then
+            export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+            echo "Solana CLI installed successfully"
+        else
+            echo "Failed to install Solana CLI"
+            return 1
+        fi
+    fi
+}
+
 # Check if we're in CI environment
-if [ "$CI" = "true" ]; then
+if [ "$CI" = "true" ] || [ "$GITHUB_ACTIONS" = "true" ]; then
     echo "CI environment detected"
     
     # Install Solana CLI tools for CI
     if ! command -v solana &> /dev/null; then
-        echo "Installing Solana CLI..."
-        sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
-        export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+        install_solana
     fi
     
-    # Check if cargo-build-sbf is available
-    if ! command -v cargo-build-sbf &> /dev/null; then
-        echo "cargo-build-sbf not found, installing..."
-        export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-    fi
+    # Ensure PATH includes Solana
+    export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 else
     echo "Local environment detected"
     # Use local Solana installation
     if [ -d "$HOME/.local/share/solana/install/active_release/bin" ]; then
         export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+    elif [ -d "/Users/$(whoami)/.local/share/solana/install/active_release/bin" ]; then
+        export PATH="/Users/$(whoami)/.local/share/solana/install/active_release/bin:$PATH"
+    fi
+    
+    # If cargo-build-sbf is still not available, try to install
+    if ! command -v cargo-build-sbf &> /dev/null; then
+        echo "cargo-build-sbf not found, attempting to install Solana CLI..."
+        install_solana
     fi
 fi
 

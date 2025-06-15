@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "anchor": "cd anchor && anchor",
+    "anchor": "./scripts/build-anchor.sh",
     "anchor:build": "./scripts/build-anchor.sh"
   },
   "dependencies": {
