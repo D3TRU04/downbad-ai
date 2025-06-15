@@ -2,6 +2,9 @@
   "name": "anchor",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "anchor": "anchor"
+  },
   "devDependencies": {
     "@types/node": "^20.11.24"
   }

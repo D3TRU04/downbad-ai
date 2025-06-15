@@ -1,6 +1,9 @@
 [toolchain]
 anchor_version = "0.30.1"
 
+[build]
+rustflags = []
+
 [features]
 resolution = true
 skip-lint = false
