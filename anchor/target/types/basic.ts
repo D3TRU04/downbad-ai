@@ -1,6 +1,7 @@
 export type Basic = {
   "version": "0.1.0",
   "name": "basic",
+  "address": "6z68wfurCMYkZG51s1Et9BJEd9nJGUusjHXNt4dGbNNF",
   "instructions": [
     {
       "name": "greet",
@@ -18,6 +19,7 @@ export type Basic = {
 export const IDL: Basic = {
   "version": "0.1.0",
   "name": "basic",
+  "address": "6z68wfurCMYkZG51s1Et9BJEd9nJGUusjHXNt4dGbNNF",
   "instructions": [
     {
       "name": "greet",
