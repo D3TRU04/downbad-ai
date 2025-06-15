@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "anchor": "cd anchor && anchor",
-    "anchor:build": "export PATH=\"/Users/dantruong/.local/share/solana/install/active_release/bin:$PATH\" && cd anchor && anchor build --no-idl"
+    "anchor:build": "./scripts/build-anchor.sh"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
